@@ -10,6 +10,12 @@ class CheckPrice
 {
     public function handle(Request $request, Closure $next): Response
     {
+        
+        if($request->price > 100){
+            return redirect('/');
+        }else{
+            echo 'hao';
+        }
         return $next($request);
     }
 }
