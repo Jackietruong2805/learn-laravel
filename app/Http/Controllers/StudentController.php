@@ -3,21 +3,14 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\Student;
 
 class StudentController extends Controller
 {
-    function index(){
-        
-        $data['student_info'] = [
-            'name' => 'hao',
-            'email' => 'hao@example.com',
-            'age' => 36
-        ];
-
-        return view('home', $data);
-    }
-
-    function about(){
-        return view('about');
+    public function add(){
+       $student = new Student();
+       $student->student_name = 'Gia Hao';
+       $student->student_email = 'giahao@gmail.com';
+       $student->save();
     }
 }
