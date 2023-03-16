@@ -19,11 +19,19 @@ class StudentController extends Controller
         ];
         DB::table('students')->insert($data);
     }
-    public function view(){
+    public function show(){
+        // show data with raw sql
         // $all_data['students'] = DB::select('select * from students');
-        $all_data['student_row'] = DB::select('select * from students where student_id=?', [1]);
-        
-        return view('show', $all_data);
+        // $all_data['student_row'] = DB::select('select * from students where student_id=?', [1]);
+        // return view('show', $all_data);
+
+        // show data with query builder
+        $data = DB::table('students')->get();
+        return view('show', compact('data'));
+    }
+    public function show_single($id){
+        $single_data = DB::table('students')->where('student_id', $id)->get();
+        return view('show_single', compact('single_data'));
     }
     public function update(){
         DB::update('update students set student_name="jackie" where student_id=?', [1]);

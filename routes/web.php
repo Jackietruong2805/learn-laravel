@@ -18,7 +18,8 @@
 // });
 
 Route::get('add', [StudentController::class, 'add']);
-Route::get('view', [StudentController::class, 'view']);
+Route::get('show', [StudentController::class, 'show']);
+Route::get('show_single/{id}', [StudentController::class, 'show_single']);
 Route::get('update', [StudentController::class, 'update']);
 Route::get('delete', [StudentController::class, 'delete']);
 Route::get('view_join', [StudentController::class, 'join']);
