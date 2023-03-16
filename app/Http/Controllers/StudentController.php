@@ -9,7 +9,15 @@ use Illuminate\Support\Facades\DB;
 class StudentController extends Controller
 {
     public function add(){
-       DB::insert('insert into stdnt (student_name, student_email) values(?, ?)', ['hao', 'hao@gmail.com']);
+        // Insert data with raw sql
+    //    DB::insert('insert into stdnt (student_name, student_email) values(?, ?)', ['hao', 'hao@gmail.com']);
+
+    // Insert data with query build
+        $data= [
+            'student_name'=> 'jackie',
+            'student_email'=> 'jackie@gmail.com'
+        ];
+        DB::table('students')->insert($data);
     }
     public function view(){
         // $all_data['students'] = DB::select('select * from students');
