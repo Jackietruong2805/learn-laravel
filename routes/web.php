@@ -21,4 +21,5 @@ Route::get('add', [StudentController::class, 'add']);
 Route::get('view', [StudentController::class, 'view']);
 Route::get('update', [StudentController::class, 'update']);
 Route::get('delete', [StudentController::class, 'delete']);
+Route::get('view_join', [StudentController::class, 'join']);
 

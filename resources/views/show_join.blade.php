@@ -1,0 +1,1 @@
+Name: {{$student_row[0]->student_name}}
