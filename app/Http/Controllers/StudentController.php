@@ -34,7 +34,14 @@ class StudentController extends Controller
         return view('show_single', compact('single_data'));
     }
     public function update(){
-        DB::update('update students set student_name="jackie" where student_id=?', [1]);
+        // update with sql raw
+        // DB::update('update students set student_name="jackie" where student_id=?', [1]);
+        // update with query builder
+        $data = [
+            'student_name'=>"nhi",
+            'student_email'=>"nhi@gmail.com"
+        ];
+        DB::table('students')->where('student_id', 2)->update($data);
     }
 
     public function delete(){
