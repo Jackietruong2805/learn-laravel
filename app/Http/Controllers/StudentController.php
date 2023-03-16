@@ -52,11 +52,18 @@ class StudentController extends Controller
     }
 
     public function join(){
-        $all_data['student_row'] = DB::select('select *
-                  from students t1
-                  join fees t2
-                  on t1.student_id = t2.student_id
-                  where t1.student_id =?', [2]);
-        return view('show_join', $all_data);
+        // join table with raw sql
+        // $all_data['student_row'] = DB::select('select *
+        //           from students t1
+        //           join fees t2
+        //           on t1.student_id = t2.student_id
+        //           where t1.student_id =?', [2]);
+        // return view('show_join', $all_data);
+
+        // join table with query builder
+        $results = DB::table('students')->join('fees', 'students.student_id', '=', 'fees.student_id')
+                             ->select('fees.*', 'students.student_name')
+                             ->get();
+        return view('show_join', compact('results'));
     }
 }
