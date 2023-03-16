@@ -45,7 +45,10 @@ class StudentController extends Controller
     }
 
     public function delete(){
-        DB::delete('delete from students where student_id=?', [1]);
+        // delete data with raw sql
+        // DB::delete('delete from students where student_id=?', [1]);
+        // delete data with query builder
+        DB::table('students')->where('student_id', 3)->delete();
     }
 
     public function join(){
