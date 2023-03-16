@@ -17,4 +17,11 @@ class StudentController extends Controller
         
         return view('show', $all_data);
     }
+    public function update(){
+        DB::update('update students set student_name="jackie" where student_id=?', [1]);
+    }
+
+    public function delete(){
+        DB::delete('delete from students where student_id=?', [1]);
+    }
 }
