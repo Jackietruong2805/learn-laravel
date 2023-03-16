@@ -17,5 +17,6 @@
 //     });
 // });
 
-Route::get('student/add', [StudentController::class, 'add']);
+Route::get('add', [StudentController::class, 'add']);
+Route::get('view', [StudentController::class, 'view']);
 
