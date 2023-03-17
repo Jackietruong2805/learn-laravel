@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Student;
+use App\Models\Phone;
 use Illuminate\Support\Facades\DB;
 
 class StudentController extends Controller
@@ -17,6 +18,7 @@ class StudentController extends Controller
         //     'student_name'=> 'jackie',
         //     'student_email'=> 'jackie@gmail.com'
         // ];
+
         // DB::table('students')->insert($data);
 
     // Insert data with eloquent orm
@@ -50,19 +52,30 @@ class StudentController extends Controller
     public function update(){
         // update with sql raw
         // DB::update('update students set student_name="jackie" where student_id=?', [1]);
+
         // update with query builder
-        $data = [
-            'student_name'=>"nhi",
-            'student_email'=>"nhi@gmail.com"
-        ];
-        DB::table('students')->where('student_id', 2)->update($data);
+        // $data = [
+        //     'student_name'=>"nhi",
+        //     'student_email'=>"nhi@gmail.com"
+        // ];
+        // DB::table('students')->where('student_id', 2)->update($data);
+
+        // update data with eloquent orm
+            $student = Student::where('student_id', 2)->first();
+            $student->student_name = 'nhi';
+            $student->update();
     }
 
     public function delete(){
         // delete data with raw sql
         // DB::delete('delete from students where student_id=?', [1]);
+
         // delete data with query builder
-        DB::table('students')->where('student_id', 3)->delete();
+        // DB::table('students')-s>where('student_id', 3)->delete();
+
+        // delete date with eloquent orm
+        $student = Student::where('student_id', 4)->first();
+        $student->delete();
     }
 
     public function join(){
@@ -79,5 +92,11 @@ class StudentController extends Controller
                              ->select('fees.*', 'students.student_name')
                              ->get();
         return view('show_join', compact('results'));
+    }
+
+    public function show_all_students(){
+        $students = Student::with('rPhone')->get();
+        
+        return view('show_all_students', compact('students'));
     }
 }
