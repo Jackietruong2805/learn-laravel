@@ -32,8 +32,16 @@ class StudentController extends Controller
         // return view('show', $all_data);
 
         // show data with query builder
-        $data = DB::table('students')->get();
-        return view('show', compact('data'));
+        // $data = DB::table('students')->get();
+        // return view('show', compact('data'));
+
+        // show data with eloquent orm
+        // get all students
+        // $results = Student::get();
+        // get first student
+        $results = Student::where('student_id', 2)->first();
+        // dd($results);
+        return view('view', compact('results'));
     }
     public function show_single($id){
         $single_data = DB::table('students')->where('student_id', $id)->get();
