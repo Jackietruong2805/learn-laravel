@@ -11,8 +11,4 @@ class Student extends Model
     // // protected $table = 'stdnt';
     // protected $primaryKey = 'student_id';
     // public $timestamps = false;
-    public function rPhone()
-    {
-        return $this->hasOne(Phone::class); 
-    }
 }

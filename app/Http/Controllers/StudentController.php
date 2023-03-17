@@ -95,8 +95,8 @@ class StudentController extends Controller
     }
 
     public function show_all_students(){
-        $students = Student::with('rPhone')->get();
-        
+        $students = Phone::with('rStudent')->get();
+
         return view('show_all_students', compact('students'));
     }
 }

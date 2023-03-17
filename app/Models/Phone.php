@@ -8,5 +8,8 @@ use Illuminate\Database\Eloquent\Model;
 class Phone extends Model
 {
     use HasFactory;
-
+    public function rStudent()
+    {
+        return $this->belongsTo(Student::class, 'student_id');
+    }
 }
