@@ -13,11 +13,17 @@ class StudentController extends Controller
     //    DB::insert('insert into stdnt (student_name, student_email) values(?, ?)', ['hao', 'hao@gmail.com']);
 
     // Insert data with query build
-        $data= [
-            'student_name'=> 'jackie',
-            'student_email'=> 'jackie@gmail.com'
-        ];
-        DB::table('students')->insert($data);
+        // $data= [
+        //     'student_name'=> 'jackie',
+        //     'student_email'=> 'jackie@gmail.com'
+        // ];
+        // DB::table('students')->insert($data);
+
+    // Insert data with eloquent orm
+        $student = new Student();
+        $student->student_name = 'nancy';
+        $student->student_email = 'nancy3008@gmail.com';
+        $student->save();    
     }
     public function show(){
         // show data with raw sql
